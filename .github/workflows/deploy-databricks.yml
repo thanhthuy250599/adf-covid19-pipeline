@@ -20,4 +20,5 @@ jobs:
             -F path="/Users/uongthanhthuy99@gmail.com/clean_simple_covid" \
             -F format="SOURCE" \
             -F language="PYTHON" \
+            -F overwrite=true \
             -F content=@databricks_notebooks/clean_simple_covid
