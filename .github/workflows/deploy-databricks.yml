@@ -38,6 +38,6 @@ jobs:
       run: |
         git config user.name "Thanh Thủy"
         git config user.email "uongthanhthuy99@gmail.com"
-        git add clean_simple_covid
+        git add databricks_notebooks/clean_simple_covid
         git commit -m "🔄 Auto-export from Databricks" || echo "No changes to commit"
         git push
