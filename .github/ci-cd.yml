@@ -1,0 +1,22 @@
+## 🔐 Secrets & Configuration
+
+### 1. GitHub Repository Secrets
+
+Thêm các secrets sau vào GitHub:
+
+| Tên biến              | Mô tả                            |
+|-----------------------|----------------------------------|
+| `DATABRICKS_HOST`     | Workspace URL của bạn            |
+| `DATABRICKS_TOKEN`    | Access token của Databricks      |
+| `AZURE_CREDENTIALS`   | Dạng JSON của Service Principal  |
+| `SUBSCRIPTION_ID`     | Subscription ID của Azure        |
+| `RESOURCE_GROUP`      | Resource group của Azure         |
+
+> Format cho `AZURE_CREDENTIALS`:
+```json
+{
+  "clientId": "...",
+  "clientSecret": "...",
+  "tenantId": "...",
+  "subscriptionId": "..."
+}
