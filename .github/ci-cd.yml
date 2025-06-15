@@ -14,7 +14,7 @@
 
 Add the following secrets to your GitHub repository:
 
-| Tên biến              | Mô tả                                      |
+| Variable Name         | Description                                |
 |-----------------------|--------------------------------------------|
 | `DATABRICKS_HOST`     | Your Databricks workspace URL              |
 | `DATABRICKS_TOKEN`    | Access token for your Databricks           |
