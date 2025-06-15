@@ -1,0 +1,9 @@
+{
+	"name": "demopipelinetu99",
+	"location": "eastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "096c43fa-4c34-43e9-85e6-67e06774e546",
+		"tenantId": "75b971c9-d558-40cd-85dc-5d43bd042acb"
+	}
+}

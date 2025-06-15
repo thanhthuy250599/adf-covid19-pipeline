@@ -1,0 +1,17 @@
+{
+	"name": "PostgreSql",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "PostgreSqlV2",
+		"typeProperties": {
+			"server": "thuy-pg-host.postgres.database.azure.com",
+			"port": 5432,
+			"database": "coviddb",
+			"username": "pgadmin",
+			"sslMode": 4,
+			"authenticationType": "Basic",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEUzQTgwRkZDLURENDUtNDY0Ny1BODRCLUUzMDU0N0U3NTM1OV8yZWU3MDVkOS0yYjY4LTRkNmQtOWExZC03Mjk3YjNmMTczNDMiDQp9"
+		}
+	}
+}
