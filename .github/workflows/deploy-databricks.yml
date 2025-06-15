@@ -23,10 +23,9 @@ jobs:
     - name: Set up Databricks credentials
       run: |
         mkdir -p ~/.databricks
-        cat <<EOF > ~/.databricks/config
-        [databricks-default]
-        host = ${{ secrets.DATABRICKS_HOST }}
-        token = ${{ secrets.DATABRICKS_TOKEN }}
+        databricks configure --token --profile databricks-default <<EOF
+        ${{ secrets.DATABRICKS_HOST }}
+        ${{ secrets.DATABRICKS_TOKEN }}
         EOF
 
     - name: Run export script
