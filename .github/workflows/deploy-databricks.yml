@@ -1,24 +1,41 @@
-name: Deploy Databricks Notebook
+name: Export notebook from Databricks to GitHub
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  deploy:
+  export_notebook:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Upload notebook to Databricks
-        run: |
-          curl -X POST ${{ secrets.DATABRICKS_HOST }}/api/2.0/workspace/import \
-            -H "Authorization: Bearer ${{ secrets.DATABRICKS_TOKEN }}" \
-            -F path="/Users/uongthanhthuy99@gmail.com/clean_simple_covid" \
-            -F format="SOURCE" \
-            -F language="PYTHON" \
-            -F overwrite=true \
-            -F content=@databricks_notebooks/clean_simple_covid
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install databricks-cli
+      run: pip install databricks-cli
+
+    - name: Set up Databricks credentials
+      run: |
+        mkdir -p ~/.databricks
+        cat <<EOF > ~/.databricks/config
+        [databricks-default]
+        host = ${{ secrets.DATABRICKS_HOST }}
+        token = ${{ secrets.DATABRICKS_TOKEN }}
+        EOF
+
+    - name: Run export script
+      run: bash scripts/export_from_databricks.sh
+
+    - name: Commit exported notebook
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add clean_simple_covid.py
+        git commit -m "🔄 Auto-export from Databricks" || echo "No changes to commit"
+        git push
