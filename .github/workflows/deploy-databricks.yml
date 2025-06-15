@@ -30,12 +30,12 @@ jobs:
         EOF
 
     - name: Run export script
-      run: bash scripts/export_from_databricks.sh
+      run: bash databricks_notebooks/export_from_databricks.sh
 
     - name: Commit exported notebook
       run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
+        git config user.name "Thanh Thủy"
+        git config user.email "uongthanhthuy99@gmail.com"
         git add clean_simple_covid.py
         git commit -m "🔄 Auto-export from Databricks" || echo "No changes to commit"
         git push
