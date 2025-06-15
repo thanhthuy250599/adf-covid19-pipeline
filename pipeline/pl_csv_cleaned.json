@@ -1,9 +1,9 @@
 {
-	"name": "etl_clean_csv",
+	"name": "pl_csv_cleaned",
 	"properties": {
 		"activities": [
 			{
-				"name": "cleaned_csv",
+				"name": "etl_clean_csv",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
