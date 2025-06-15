@@ -1,1 +1,59 @@
+# Databricks notebook source
+# Cấu hình đường dẫn
+input_path = "wasbs://rawdata@demopipelinetu99.blob.core.windows.net/covid-data.csv"
+spark.conf.set(
+    "fs.azure.account.key.demopipelinetu99.blob.core.windows.net",
+    "TY5t4WKiN3WFvEiiIv0Qh192wz0Ig3RyFv1VTSJxBrVB55V5uvmACzNIoV+uyG+82vDtNsxioBAB+AStyg/I8Q=="
+)
 
+# Đọc CSV
+df = spark.read.option("header", True).option("inferSchema", True).csv(input_path)
+
+
+# COMMAND ----------
+
+# Xử lý 
+columns = [ 'location', 'date', 'total_cases',
+                    'total_deaths', 'population']
+df = df.select(columns)
+
+
+# COMMAND ----------
+
+df = df[['location', 'date', 'total_cases',
+                    'total_deaths', 'population']].dropna()
+
+# COMMAND ----------
+
+from pyspark.sql.functions import col, max as spark_max, last
+
+# Lấy ngày mới nhất theo từng quốc gia
+latest_date_df = df.groupBy("location").agg(spark_max("date").alias("date"))
+
+
+
+
+# COMMAND ----------
+
+# Join với df gốc để lấy dòng mới nhất của mỗi quốc gia
+df_latest = df.join(latest_date_df, on=["location", "date"])
+
+
+# COMMAND ----------
+
+# Chọn các cột cần lấy
+result_df = df_latest.select("location", "total_cases", "total_deaths", "population")
+
+# COMMAND ----------
+
+# Ghi file lại
+jdbc_url = "jdbc:postgresql://thuy-pg-host.postgres.database.azure.com:5432/coviddb?sslmode=require"
+table_name = "cleaned_covid_data"
+mode = "overwrite"
+db_properties = {
+    "user": "pgadmin",
+    "password": "Thuyuong99!",
+    "driver": "org.postgresql.Driver"
+}
+
+result_df.write.jdbc(url=jdbc_url, table=table_name, mode=mode, properties=db_properties)
