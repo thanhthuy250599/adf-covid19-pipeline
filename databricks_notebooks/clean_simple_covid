@@ -1,10 +1,9 @@
 # Databricks notebook source
 # Cấu hình đường dẫn
 input_path = "wasbs://rawdata@demopipelinetu99.blob.core.windows.net/covid-data.csv"
-
 spark.conf.set(
-  "fs.azure.account.key.demopipelinetu99.blob.core.windows.net",
-  dbutils.secrets.get(scope="myscope", key="storage-key")
+    "fs.azure.account.key.demopipelinetu99.blob.core.windows.net",
+    "TY5t4WKiN3WFvEiiIv0Qh192wz0Ig3RyFv1VTSJxBrVB55V5uvmACzNIoV+uyG+82vDtNsxioBAB+AStyg/I8Q=="
 )
 
 # Đọc CSV
@@ -51,10 +50,9 @@ result_df = df_latest.select("location", "total_cases", "total_deaths", "populat
 jdbc_url = "jdbc:postgresql://thuy-pg-host.postgres.database.azure.com:5432/coviddb?sslmode=require"
 table_name = "cleaned_covid_data"
 mode = "overwrite"
-pg_password = dbutils.secrets.get(scope="mysecretscope", key="pgpassword")
 db_properties = {
     "user": "pgadmin",
-    "password": pg_password,
+    "password": "Thuyuong99!",
     "driver": "org.postgresql.Driver"
 }
 
