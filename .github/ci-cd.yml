@@ -1,10 +1,10 @@
 ---
 
-## 🚀 CI/CD - Tự động hóa với GitHub Actions
+## 🚀 CI/CD - Automation with GitHub Actions
 
-- Đồng bộ notebooks từ Azure Databricks về repo GitHub
-- Tự động commit và push khi có thay đổi
-- Có thể mở rộng để tự động trigger ADF pipeline
+- Sync notebooks from Azure Databricks to GitHub repository
+- Automatically commit and push changes when notebooks are updated
+- Can be extended to automatically trigger the ADF pipeline
 
 ---
 
@@ -12,17 +12,17 @@
 
 ### 1. GitHub Repository Secrets
 
-Thêm các secrets sau vào GitHub:
+Add the following secrets to your GitHub repository:
 
-| Tên biến              | Mô tả                            |
-|-----------------------|----------------------------------|
-| `DATABRICKS_HOST`     | Workspace URL của bạn            |
-| `DATABRICKS_TOKEN`    | Access token của Databricks      |
-| `AZURE_CREDENTIALS`   | Dạng JSON của Service Principal  |
-| `SUBSCRIPTION_ID`     | Subscription ID của Azure        |
-| `RESOURCE_GROUP`      | Resource group của Azure         |
+| Tên biến              | Mô tả                                      |
+|-----------------------|--------------------------------------------|
+| `DATABRICKS_HOST`     | Your Databricks workspace URL              |
+| `DATABRICKS_TOKEN`    | Access token for your Databricks           |
+| `AZURE_CREDENTIALS`   | JSON format of your Azure Service Principal|
+| `SUBSCRIPTION_ID`     | Your Azure Subscription ID                 |
+| `RESOURCE_GROUP`      | Your Azure Resource Group name             |
 
-> Format cho `AZURE_CREDENTIALS`:
+> Format for `AZURE_CREDENTIALS`:
 ```json
 {
   "clientId": "...",
