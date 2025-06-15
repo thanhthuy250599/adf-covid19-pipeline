@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "demopipelinetu99"
+		},
+		"PostgreSql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'PostgreSql'"
+		},
+		"ds_cleaned_output_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'ds_cleaned_output'"
+		},
+		"ls_blob_thuy_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_blob_thuy'"
+		},
+		"PostgreSql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "thuy-pg-host.postgres.database.azure.com"
+		},
+		"PostgreSql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "coviddb"
+		},
+		"PostgreSql_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "pgadmin"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "demopipelinetu99_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"PostgreSql_password": {
+						"value": "[parameters('PostgreSql_password')]"
+					},
+					"ds_cleaned_output_accessToken": {
+						"value": "[parameters('ds_cleaned_output_accessToken')]"
+					},
+					"ls_blob_thuy_connectionString": {
+						"value": "[parameters('ls_blob_thuy_connectionString')]"
+					},
+					"PostgreSql_properties_typeProperties_server": {
+						"value": "[parameters('PostgreSql_properties_typeProperties_server')]"
+					},
+					"PostgreSql_properties_typeProperties_database": {
+						"value": "[parameters('PostgreSql_properties_typeProperties_database')]"
+					},
+					"PostgreSql_properties_typeProperties_username": {
+						"value": "[parameters('PostgreSql_properties_typeProperties_username')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
