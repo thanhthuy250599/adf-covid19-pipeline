@@ -24,4 +24,4 @@ jobs:
           resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
           template: demopipelinetu99/ARMTemplateForFactory.json
           parameters: demopipelinetu99/ARMTemplateParametersForFactory.json
-          deploymentName: adf-deployment
+          deploymentName: adf-deployer
