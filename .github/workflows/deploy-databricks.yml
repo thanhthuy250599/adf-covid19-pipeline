@@ -1,0 +1,23 @@
+name: Deploy Databricks Notebook
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Upload notebook to Databricks
+        run: |
+          curl -X POST https://adb-1167077624059761.1.azuredatabricks.net/api/2.0/workspace/import \
+            -H "Authorization: Bearer ${{ secrets.DATABRICKS_TOKEN }}" \
+            -F path="/Shared/clean_simple_covid" \
+            -F format="SOURCE" \
+            -F language="PYTHON" \
+            -F content=@databricks_notebooks/clean_simple_covid
