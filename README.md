@@ -38,16 +38,7 @@ Main script: `clean_simple_covid.py`
 ## ⚙️ Project Structure
 
 adf-covid19-pipeline/
-│
-├── databricks_notebooks/
-│ └── clean_simple_covid # Data processing notebook/script
-│
-├── .github/
-│ └── workflows/
-│ └── ci-cd.yml # GitHub Actions CI/CD workflow
-│
-├── datasets/
-│ └── [covid-data.csv](https://github.com/thanhthuy250599/demo_pipeline_covid19/blob/main/covid-data.csv) # Sample file for local testing (optional)
-│
-├── README.md # Project documentation
-
+─ databricks_notebooks/clean_simple_covid # Data processing notebook/script
+─ .github/ci-cd.yml # GitHub Actions CI/CD workflow
+─ datasets/[covid-data.csv](https://github.com/thanhthuy250599/demo_pipeline_covid19/blob/main/covid-data.csv) # Sample file for local testing (optional)
+─ README.md # Project documentation
