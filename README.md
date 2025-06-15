@@ -47,7 +47,7 @@ adf-covid19-pipeline/
 │ └── ci-cd.yml # GitHub Actions CI/CD workflow
 │
 ├── datasets/
-│ └── [covid-data.csv](https://github.com/thanhthuy250599/demo_pipeline_covid19/blob/main/covid-data.csv) # Sample file for local testing (optional)
+│ └── [covid-data.csv] # Sample file for local testing (optional)
 │
 ├── README.md # Project documentation
 
