@@ -34,10 +34,11 @@ jobs:
     - name: Run export script
       run: bash databricks_notebooks/export_from_databricks.sh
 
-    - name: Commit exported notebook
+    - name: Commit and Push changes
       run: |
         git config user.name "Thanh Thủy"
         git config user.email "uongthanhthuy99@gmail.com"
         git add databricks_notebooks/clean_simple_covid
-        git commit -m "🔄 Auto-export from Databricks" || echo "No changes to commit"
-        git push
+        git commit -m "Auto update Databricks notebook" || echo "No changes to commit"
+        git pull --rebase origin main
+        git push origin main
