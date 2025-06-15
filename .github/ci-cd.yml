@@ -1,3 +1,13 @@
+---
+
+## 🚀 CI/CD - Tự động hóa với GitHub Actions
+
+- Đồng bộ notebooks từ Azure Databricks về repo GitHub
+- Tự động commit và push khi có thay đổi
+- Có thể mở rộng để tự động trigger ADF pipeline
+
+---
+
 ## 🔐 Secrets & Configuration
 
 ### 1. GitHub Repository Secrets
