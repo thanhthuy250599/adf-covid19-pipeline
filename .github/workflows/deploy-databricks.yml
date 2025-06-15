@@ -18,4 +18,4 @@ jobs:
         with:
           databricks-host: ${{ secrets.DATABRICKS_HOST }}
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
-          path: /Workspace/Users/uongthanhthuy99@gmail.com/clean_simple_covid
+          path: /Users/uongthanhthuy99@gmail.com/clean_simple_covid
